@@ -5,11 +5,11 @@ Library built on top of [`openh264`](https://github.com/cisco/openh264), providi
 ## Example
 The example in `example` decodes an H264 video and saves the decoded frames into a file.
 ### Build
-* Build [`openh264`](https://github.com/veracruz-project/openh264)
+* Build [`openh264`](https://github.com/veracruz-project/openh264):
   ```cd openh264; make libopenh264.a```
-* Build `openh264-dec`
+* Build `openh264-dec`:
   ```cd openh264-dec; make```
-* Build the example
+* Build the example:
   ```cd openh264-dec/example; make```
 ### Run
 * In wasmtime:
