@@ -5,8 +5,12 @@ Library built on top of [`openh264`](https://github.com/cisco/openh264), providi
 ## Example
 The example in `example` decodes an H264 video and saves the decoded frames into a file.
 ### Build
-* Build [`openh264`](https://github.com/veracruz-project/openh264) and `openh264-dec`. Both directories should be at the same filesystem level, i.e. under the same directory
+* Build [`openh264`](https://github.com/veracruz-project/openh264)
+  ```cd openh264; make libopenh264.a```
+* Build `openh264-dec`
+  ```cd openh264-dec; make```
 * Build the example
+  ```cd openh264-dec/example; make```
 ### Run
 * In wasmtime:
   ```wasmtime --dir=. dec.wasm```
