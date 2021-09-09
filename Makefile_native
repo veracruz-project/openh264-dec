@@ -31,16 +31,16 @@ OBJS += $(H264DEC_OBJS)
 $(H264DEC_SRCDIR)/%.$(OBJ): $(H264DEC_SRCDIR)/%.cpp
 	$(QUIET_CXX)$(CXX) $(CFLAGS) $(CXXFLAGS) $(INCLUDES) $(H264DEC_CFLAGS) $(H264DEC_INCLUDES) -c $(CXX_O) $< -o $@
 
-libh264dec.a: $(H264DEC_OBJS)
+libopenh264dec.a: $(H264DEC_OBJS)
 	$(QUIET)rm -f $@
 	$(QUIET_AR)$(AR) $(AR_OPTS) $+
 ifeq (True, $(PROCESS_FILES))
-	cp $@ $(LIBPREFIX)h264dec.$(DEBUGSYMBOLS_TAG).$(LIBSUFFIX)
+	cp $@ $(LIBPREFIX)openh264dec.$(DEBUGSYMBOLS_TAG).$(LIBSUFFIX)
 	$(STRIP) $(STRIP_FLAGS) $@ -o $@
 endif
 
-libraries: libh264dec.a
+libraries: libopenh264dec.a
 
 clean:
 	rm src/*.o
-	rm libh264dec.a
+	rm libopenh264dec.a
