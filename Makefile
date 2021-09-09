@@ -31,9 +31,7 @@ OBJS += $(H264DEC_OBJS)
 $(H264DEC_SRCDIR)/%.$(OBJ): $(H264DEC_SRCDIR)/%.cpp
 	$(QUIET_CXX)$(CXX) $(CFLAGS) $(CXXFLAGS) $(INCLUDES) $(H264DEC_CFLAGS) $(H264DEC_INCLUDES) -c $(CXX_O) $< -o $@
 
-#$(LIBPREFIX)h264dec.$(LIBSUFFIX): $(H264DEC_OBJS) $(DECODER_OBJS) $(COMMON_OBJS)
 libh264dec.a: $(H264DEC_OBJS)
-	#$(QUIET_CXX)$(CXX) $(CXX_LINK_O) $(H264DEC_OBJS) $(H264DEC_LDFLAGS) $(LDFLAGS)
 	$(QUIET)rm -f $@
 	$(QUIET_AR)$(AR) $(AR_OPTS) $+
 ifeq (True, $(PROCESS_FILES))
@@ -42,7 +40,6 @@ ifeq (True, $(PROCESS_FILES))
 endif
 
 libraries: libh264dec.a
-LIBRARIES += libh264dec.a
 
 clean:
 	rm src/*.o
