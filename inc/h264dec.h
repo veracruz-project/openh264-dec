@@ -14,4 +14,6 @@ Based on the OpenH264 codec library, BSD license (https://github.com/cisco/openh
 
 #include <string>
 
-int32_t h264_decode(std::string strInputFile, std::string strOutputFile);
+using namespace std;
+
+int32_t h264_decode(string strInputFile, string strOutputFile, bool saveOutput, void (*onFrameReady)(SBufferInfo *));
