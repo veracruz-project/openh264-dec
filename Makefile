@@ -9,7 +9,7 @@
 # See the `LICENSE_MIT.markdown` file in the root directory for copyright and
 # licensing information.
 
-OBJ=o
+OBJ=wasm
 AR_OPTS=cr $@
 SRC_PATH = ../openh264/
 
@@ -39,16 +39,16 @@ OBJS += $(H264DEC_OBJS)
 $(H264DEC_SRCDIR)/%.$(OBJ): $(H264DEC_SRCDIR)/%.cpp
 	$(QUIET_CXX)$(CXX) $(CFLAGS) $(CXXFLAGS) $(INCLUDES) $(H264DEC_CFLAGS) $(H264DEC_INCLUDES) -c $(CXX_O) $< -o $@
 
-libopenh264dec.a: $(H264DEC_OBJS)
+libopenh264dec_wasm.a: $(H264DEC_OBJS)
 	$(QUIET)rm -f $@
 	$(QUIET_AR)$(AR) $(AR_OPTS) $+
 ifeq (True, $(PROCESS_FILES))
-	cp $@ $(LIBPREFIX)openh264dec.$(DEBUGSYMBOLS_TAG).$(LIBSUFFIX)
+	cp $@ $(LIBPREFIX)openh264dec_wasm.$(DEBUGSYMBOLS_TAG).$(LIBSUFFIX)
 	$(STRIP) $(STRIP_FLAGS) $@ -o $@
 endif
 
-libraries: libopenh264dec.a
+libraries: libopenh264dec_wasm.a
 
 clean:
-	rm src/*.o
-	rm libopenh264dec.a
+	rm src/*.$(OBJ)
+	rm libopenh264dec_wasm.a
