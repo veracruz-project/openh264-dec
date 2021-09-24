@@ -273,17 +273,19 @@ void H264DecodeInstance (ISVCDecoder* pDecoder, const char* kpH264FileName, cons
     return;
   }
 
-  if (kpOuputFileName) {
-    pYuvFile = fopen (kpOuputFileName, "wb");
-    if (pYuvFile == NULL) {
-      fprintf (stderr, "Can not open yuv file to output result of decoding..\n");
+  if (saveOutput) {
+    if (kpOuputFileName) {
+      pYuvFile = fopen (kpOuputFileName, "wb");
+      if (pYuvFile == NULL) {
+        fprintf (stderr, "Can not open yuv file to output result of decoding..\n");
+        // any options
+        //return; // can let decoder work in quiet mode, no writing any output
+      } else
+        fprintf (stderr, "Sequence output file name: %s..\n", kpOuputFileName);
+    } else {
+      fprintf (stderr, "Can not find any output file to write..\n");
       // any options
-      //return; // can let decoder work in quiet mode, no writing any output
-    } else
-      fprintf (stderr, "Sequence output file name: %s..\n", kpOuputFileName);
-  } else {
-    fprintf (stderr, "Can not find any output file to write..\n");
-    // any options
+    }
   }
 
   if (pOptionFileName) {
