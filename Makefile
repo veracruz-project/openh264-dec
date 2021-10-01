@@ -16,7 +16,7 @@ SRC_PATH = ../openh264/
 # wasi sdk toolchain
 WASI_SDK_SYSROOT=$(WASI_SDK_ROOT)/share/wasi-sysroot
 CLANG_FLAGS=--target=wasm32-wasi
-CC=$(WASI_SDK_ROOT)/bin/clang++ --sysroot=$(WASI_SDK_SYSROOT) $(CLANG_FLAGS)
+CC=$(WASI_SDK_ROOT)/bin/clang --sysroot=$(WASI_SDK_SYSROOT) $(CLANG_FLAGS)
 CXX=$(CC)
 AR=$(WASI_SDK_ROOT)/bin/ar
 
