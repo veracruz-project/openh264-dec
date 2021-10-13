@@ -16,4 +16,13 @@ Based on the OpenH264 codec library, BSD license (https://github.com/cisco/openh
 
 using namespace std;
 
-int32_t h264_decode(string strInputFile, string strOutputFile, bool saveOutput, void (*onFrameReady)(SBufferInfo *));
+/* Decode an H.264 video.
+ * Input:
+ *   - video filename
+ *   - output filename: where the frames are saved
+ *   - whether frames should be saved
+ *   - callback called whenever a frame is decoded and ready
+ * Output: error code
+ */
+int32_t h264_decode(string strInputFile, string strOutputFile, bool saveOutput,
+                    void (*onFrameReady)(SBufferInfo *));
