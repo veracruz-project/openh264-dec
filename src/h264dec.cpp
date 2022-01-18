@@ -562,11 +562,13 @@ int32_t h264_decode(string strInputFile, string strOutputFile, bool saveOutput, 
     sDecParam.pFileNameRestructed = NULL;
   }
 
+#if 0
   if (pDecoder) {
     pDecoder->Uninitialize();
 
     WelsDestroyDecoder (pDecoder);
   }
+#endif
 
   return 0;
 }
